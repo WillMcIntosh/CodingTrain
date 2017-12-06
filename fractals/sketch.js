@@ -3,7 +3,7 @@ var maxAngle = 0.1;
 var minAngle = 0.8;
 
 var slider;
-var info;
+var stop = false;
 
 function setup(){
     // put setup code here
@@ -25,11 +25,16 @@ function draw(){
 }
 
 function branch(len){
+
     line(0, 0, 0, -len);
     translate(0, -len);
-    if (len > 4){
-        push();
+    
+    if (len < 10){
+        return;
+    }
+    if (stop === false){
         angle = Math.random()*(maxAngle - minAngle) + minAngle;
+        push();
         rotate(angle);
         branch(len*0.67);
         pop();
@@ -38,8 +43,10 @@ function branch(len){
         rotate(-angle);
         branch(len*0.67);
         pop();
-
     }
+
+
+    
 }
 
 
