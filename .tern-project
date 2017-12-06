@@ -3,8 +3,7 @@
         "browser",
         "ecmascript",
         "jquery",
-        "react",
-        "p5"
+        "react"
     ],
     "plugins": {
         "node": {}
