@@ -1,0 +1,13 @@
+{
+    "libs": [
+        "browser",
+        "ecmascript",
+        "jquery",
+        "react",
+        "p5"
+    ],
+    "plugins": {
+        "node": {}
+    }
+}
+    
