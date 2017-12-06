@@ -1,48 +1,36 @@
-var angle = 0;
-var maxAngle = 0.1;
-var minAngle = 0.8;
-
-var slider;
-var stop = false;
+var tree = [];
 
 function setup(){
     // put setup code here
     createCanvas(480, 480);
-    slider = createSlider(0, PI/2, PI/4, 0.1);
+    var a = createVector(width / 2, height);
+    var b = createVector(width / 2, height - 100);
+    root = new Branch(a,b);
+
+    tree[0] = root;
+
+
 }
 
+function mousePressed() {
+    for (var i = tree.length - 1; i >= 0; i--) {
+        // prevent drawing the root and previously
+        // drawn branches over and over
+        if (!tree[i].finished) {
+            tree.push(tree[i].branchA());
+            tree.push(tree[i].branchB());
+        }
+        tree[i].finished = true;
+    }
+}
 
 function draw(){
     // put drawing code here
     background(0);
-    angle = slider.value();
-    stroke(255);
-    // translate the origin to bottom center
-    translate(240, height);
-
-    branch(100);
-
-}
-
-function branch(len){
-
-    line(0, 0, 0, -len);
-    translate(0, -len);
-    
-    if (len > 4){
-        push();
-        rotate(angle);
-        branch(len*0.67);
-        pop();
-
-        push();
-        rotate(-angle);
-        branch(len*0.67);
-        pop();
+    for (var i = 0; i <tree.length; i++){
+        tree[i].show();
     }
 
-
-    
 }
 
 
