@@ -2,6 +2,7 @@ var len = 100;
 var angle = 0;
 
 var slider;
+var info;
 
 function setup(){
     // put setup code here
@@ -14,6 +15,8 @@ function draw(){
     // put drawing code here
     background(0);
     angle = slider.value();
+    textSize(32);
+    text(angle, 400, 200);
     stroke(255);
     // translate the origin to bottom center
     translate(240, height);
