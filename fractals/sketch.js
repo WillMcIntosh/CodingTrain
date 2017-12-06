@@ -1,5 +1,6 @@
-var len = 100;
 var angle = 0;
+var maxAngle = 0.1;
+var minAngle = 0.8;
 
 var slider;
 var info;
@@ -7,16 +8,14 @@ var info;
 function setup(){
     // put setup code here
     createCanvas(480, 480);
-    slider = createSlider(0, PI/2, PI/4, 0.1);
+    // slider = createSlider(0, PI/2, PI/4, 0.1);
 }
 
 
 function draw(){
     // put drawing code here
     background(0);
-    angle = slider.value();
-    textSize(32);
-    text(angle, 400, 200);
+    // angle = slider.value();
     stroke(255);
     // translate the origin to bottom center
     translate(240, height);
@@ -30,6 +29,7 @@ function branch(len){
     translate(0, -len);
     if (len > 4){
         push();
+        angle = Math.random()*(maxAngle - minAngle) + minAngle;
         rotate(angle);
         branch(len*0.67);
         pop();
