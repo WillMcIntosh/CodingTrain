@@ -11,7 +11,6 @@ function setup(){
     slider = createSlider(0, PI/2, PI/4, 0.1);
 }
 
-
 function draw(){
     // put drawing code here
     background(0);
@@ -40,9 +39,4 @@ function branch(len){
         branch(len*0.67);
         pop();
     }
-
-
-    
 }
-
-
